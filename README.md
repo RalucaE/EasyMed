@@ -6,8 +6,8 @@ EasyMed represents the modern solution for digital management of medical test re
 # Main functionalities
 
 1. Efficient Management of Medical Documents
--Allows uploading medical documents in PDF format.
--Implementation of functionalities for automatic extraction of relevant data from uploaded documents.
+1.1. Allows uploading medical documents in PDF format.
+1.2. Implementation of functionalities for automatic extraction of relevant data from uploaded documents.
 
 2. Calculating Risk Scores for Medical Conditions
 -Utilizes an artificial intelligence model to calculate the probability of developing certain conditions using data extracted from medical tests and users' personal information.
