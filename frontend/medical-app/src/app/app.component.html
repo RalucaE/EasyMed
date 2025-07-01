@@ -1,0 +1,9 @@
+<div class="main-layout">
+    <app-header *ngIf="showHeader"></app-header>
+    <div [ngClass]="{ 'content-with-header': showHeader, 'content-no-header': !showHeader }" class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<div class="fixed-div">
+    Acesta platforma nu înlocuiește medicii – doar  oferă suport pentru evidențierea potențialelor probleme ce ar trebui investigate
+</div>

@@ -1,0 +1,12 @@
+<div class="report-container">
+  <div class="title"> 
+    <h1>Rezultate analize</h1>
+    <button class="button-scores" (click)="goToScores()">Vezi riscurile asociate</button>
+  </div>
+  <!-- The table will be dynamically created here -->
+  <div id="table-container"></div>
+
+</div>
+<div *ngIf="isLoading" class="loading-container">
+  <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+</div>

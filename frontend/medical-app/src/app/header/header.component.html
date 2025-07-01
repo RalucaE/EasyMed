@@ -1,0 +1,27 @@
+<div class="main-header">
+  <div class="left-side">
+    <img alt="Logo" src="../../assets/images/logo.svg">
+    <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" class="home-link" (click)="toggleMenu()">EasyMed</a>
+  </div>
+  <div *ngIf="isAuthenticated" class="middle-side">
+      <a routerLink="/reports" routerLinkActive="active" ariaCurrentWhenActive="page">Rapoarte</a>
+      <a routerLink="/scores" routerLinkActive="active" ariaCurrentWhenActive="page">Riscuri</a>
+      <a routerLink="/charts" routerLinkActive="active" ariaCurrentWhenActive="page">Grafice</a>
+    </div>
+  <div class="right-side">
+    <p *ngIf="this.isAuthenticated"> Salut, {{this.username}} </p>
+    <div class="user-dropdown">
+      <button  [matMenuTriggerFor]="isAuthenticated ? menuUser : menuGuest" class="user-btn">                      
+        <img alt="User"  class="icon" src="../../assets/images/user.svg">  
+      </button>
+      <mat-menu #menuGuest="matMenu">
+        <button mat-menu-item><a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Înregistrare</a></button>
+        <button mat-menu-item><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Autentificare</a></button>
+      </mat-menu>
+      <mat-menu #menuUser="matMenu">
+        <button mat-menu-item><a routerLink="/user-details" routerLinkActive="active" ariaCurrentWhenActive="page">Detalii Utilizator</a></button>
+        <button class="button-class-red" mat-menu-item (click)="logout()"><a>Deconectare</a></button>
+      </mat-menu>
+    </div>               
+  </div>           
+</div>

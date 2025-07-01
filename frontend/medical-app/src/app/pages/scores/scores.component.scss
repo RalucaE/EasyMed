@@ -1,0 +1,229 @@
+.container {
+  margin: 3% 10% 3% 10%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 4px;
+}
+//HEADER
+.page-header {
+  text-align: center;
+  h2 {
+    color: #4DAA8E;
+    font-size: 2rem;
+  }
+  .description-text {
+    color: #668f8f;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+.no-reports-message {
+  text-align: center;
+  padding: 20px;
+  h2 {
+    color: #4DAA8E;
+    margin-bottom: 15px;
+  }
+  p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .upload-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4DAA8E;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #3d8a6e;
+    }
+  }
+}
+//SCORES
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.score-card {
+  border: 2px solid #4DAA8E;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 120px;
+  padding: 25px;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.disease-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #4DAA8E;
+  text-align: center;
+}
+.risk-level {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(77, 170, 142, 0.15);
+  color: #4DAA8E;
+}
+@media (max-width: 768px) {
+  .score-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+  .score-card {
+    min-height: 70px;
+    padding: 10px;
+  }
+  .disease-name {
+    font-size: 1.1rem;
+  }
+  .chat-response {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+}
+
+// Add overlay when card is active
+.score-grid::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.score-grid:has(.chat-response.show)::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.active-card {
+  border: 4px solid #4DAA8E;
+  transform: translateY(-2px);
+}
+
+//POP-UP
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+.details-container {
+  background: white;
+  border-radius: 12px;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+  overflow: hidden;
+}
+.modal-header {
+  background: #4DAA8E;
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .ai-indicator {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .risk-level {
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 2%;
+  }
+}
+.close-btn {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #343a40;
+  }
+}
+.response-content {
+  padding: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

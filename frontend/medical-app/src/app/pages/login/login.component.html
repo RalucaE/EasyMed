@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+        <div class="left-side">
+            <img alt="Logo" src="../../../assets/images/logo.svg">  
+            <p class="title">EasyMed</p>
+        </div>         
+    </div>
+    <h2>Autentificare</h2>
+    <form #addForm="ngForm" (ngSubmit)="login(addForm)">
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" ngModel name="email" required>
+        </div>
+        <div>
+            <label for="password">Parola:</label>
+            <input type="password" id="password" ngModel name="password" required>
+        </div>
+        <button type="submit" value="login">Autentificare</button>
+    </form>
+    <div> 
+        <p class="footer"> Nou pe EasyMed? <a href="/register"> Creează un cont</a></p>
+    </div>
+</div>

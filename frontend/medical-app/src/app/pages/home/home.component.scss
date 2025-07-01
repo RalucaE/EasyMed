@@ -1,0 +1,38 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px 150px 20px 150px;
+}
+.score-grid {
+  padding: 80px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+}
+.score-card {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s;
+  width: 220px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.score-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+img{
+  margin: 1%;
+  width: 64px;
+  height: 64px;
+}
+h2 {
+  color: #4DAA8E;
+}
+p {
+  font-size: 18px;
+}

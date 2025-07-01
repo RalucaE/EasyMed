@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <div class="left-side">
+            <img alt="Logo" src="../../../assets/images/logo.svg">  
+            <p class="title">EasyMed</p>
+        </div>         
+    </div>
+    <h2>Înregistrare</h2>
+    <form #addForm="ngForm" (ngSubmit)="register(addForm)">
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+        <div>
+            <label for="fullName">Numele complet:</label>
+            <input type="text" id="fullName" ngModel name="fullName" required>
+        </div>
+        <div>
+            <label for="username">Numele de utilizator:</label>
+            <input type="text" id="username" ngModel name="username" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" ngModel name="email" required>
+        </div>
+        <div>
+            <label for="password">Parola:</label>
+            <input type="password" id="password" ngModel name="password" required>
+        </div>
+        <div>
+            <label for="confirmPassword">Confirmă parola:</label>
+            <input type="password" id="confirmPassword" ngModel name="confirmPassword" required>
+        </div>
+        <button type="submit" value="register">Înregistrare</button>
+    </form>
+    <div class="footer"> 
+        <p> Ai deja un cont? <a href="/login"> Autentifică-te </a></p>
+    </div>
+</div>
+

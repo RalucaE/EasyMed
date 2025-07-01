@@ -1,0 +1,99 @@
+<div class="container" *ngIf="this.user">
+    <div class="header">
+      <div *ngIf="gender === 'Feminin'; else otherImage">
+        <img alt="Logo" src="../../../assets/images/feminine-profile-user.png">
+      </div>
+      <ng-template #otherImage>
+        <img alt="Logo" src="../../../assets/images/profile-user.png">
+      </ng-template>
+        <div>
+            <h2>{{user.fullName}}</h2>
+            <h3>{{user.email}}</h3>
+        </div>
+    </div>
+    <form #addForm="ngForm" (ngSubmit)="editUser(addForm)">
+        <div class="details-layout">
+            <div class="details-column">
+                <h3>Parametri Corporali</h3>
+                <div>
+                    <label for="gender">Gen:</label>
+                    <select id="gender" name="gender" [(ngModel)]="user.userDetails.gender">
+                        <option value="Masculin">Masculin</option>
+                        <option value="Feminin">Feminin</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="age">Varsta:</label>
+                    <input type="number" id="age" ngModel name="age" required [(ngModel)]="user.userDetails.age">
+                </div>
+                <div>
+                    <label for="weight">Greutate (kg):</label>
+                    <input type="number" id="weight" ngModel name="weight" required [(ngModel)]="user.userDetails.weight">
+                </div>
+                <div>
+                    <label for="height">Inaltime (cm):</label>
+                    <input type="number" id="height" ngModel name="height" required [(ngModel)]="user.userDetails.height">
+                </div>
+                 <div>
+                    <label for="waistCircumference">Circumferința Taliei (cm):</label>
+                    <input type="number" id="waistCircumference" ngModel name="waistCircumference" [(ngModel)]="user.userDetails.waistCircumference">
+                </div>
+                 <div>
+                    <label for="arterialTension">Tensiunea Arterială:</label>
+                    <input type="text" id="arterialTension" ngModel name="arterialTension" [(ngModel)]="user.userDetails.arterialTension">
+                </div>
+            </div>
+            <div class="details-column">
+                <h3>Stil de Viață</h3>
+                <div>
+                    <label for="alcoholConsumption">Consum de Alcool:</label>
+                    <select id="alcoholConsumption" name="alcoholConsumption" [(ngModel)]="user.userDetails.alcoholConsumption">
+                        <option value="Nu consum alcool">Nu consum alcool</option>
+                        <option value="Consum ocazional">Consum ocazional (rar)</option>
+                        <option value="Consum moderat">Consum moderat (de câteva ori pe lună)</option>
+                        <option value="Consum frecvent">Consum frecvent de câteva ori pe săptămână</option>
+                        <option value="Consum zilnic">Consum zilnic</option>
+                    </select>
+                </div>                     
+                 <div>
+                    <label for="physicalActivityLevel">Nivel de Activitate Fizică:</label>
+                    <select id="physicalActivityLevel" ngModel name="physicalActivityLevel" [(ngModel)]="user.userDetails.physicalActivityLevel">
+                        <option value="Sedentar">Sedentar</option>
+                        <option value="Moderat Activ">Moderat</option>
+                        <option value="Moderat Activ">Activ</option>
+                        <option value="Foarte Activ">Foarte Activ</option>
+                    </select>
+                </div>
+                <div class="item">                   
+                    <input type="checkbox" id="smoking" ngModel name="smoking" [(ngModel)]="user.userDetails.smoking">
+                    <label for="smoking" class="checkbox_label">Fumator</label>
+                </div>  
+
+                <h3>Istoric Medical</h3>
+                 <div>
+                    <label>Boli Preexistente:</label>
+                    <div class="item">
+                        <input type="checkbox" id="diabetes" ngModel name="diabetes" [(ngModel)]="user.userDetails.diabetes">
+                        <label for="diabetes" class="checkbox_label">Diabet</label>
+                    </div>
+                     <div class="item">
+                        <input type="checkbox" id="hypertension" ngModel name="hypertension" [(ngModel)]="user.userDetails.hypertension">
+                        <label for="hypertension" class="checkbox_label">Hipertensiune arterială</label>
+                    </div>
+                     <div class="item">
+                        <input type="checkbox" id="autoimmuneDiseases" ngModel name="autoimmuneDiseases" [(ngModel)]="user.userDetails.autoimmuneDiseases">
+                        <label for="autoimmuneDiseases" class="checkbox_label">Boli autoimune</label>
+                    </div>                 
+                </div>
+                <div>
+                    <label for="allergies">Alergii:</label>
+                    <input type="text" id="allergies" ngModel name="allergies" [(ngModel)]="user.userDetails.allergies">
+                </div>
+            </div>
+        </div>
+        <button type="submit" value="editUser">Editare</button>
+    </form>
+</div>
+<div *ngIf="isLoading" class="loading-container">
+    <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+</div>

@@ -1,0 +1,55 @@
+<div>
+  <div class="container">
+    <div *ngIf="!hasReports" class="no-reports-message">
+      <h2>Nu există rapoarte disponibile</h2>
+      <p>Pentru a vedea scorurile de risc pentru sănătate, vă rugăm să încărcați rapoarte medicale.</p>
+      <a href="/reports" class="upload-link">Încarcă rapoarte</a>
+    </div>
+
+    <div *ngIf="hasReports">
+      <div class="page-header">
+        <h2>Scoruri de Risc pentru Sănătate</h2>
+        <p class="description-text">
+          Pe baza analizelor medicale și datelor personale, am generat o evaluare a riscurilor potențiale pentru sănătatea dumneavoastră. 
+          Apăsați pe fiecare card pentru a vedea o analiză detaliată și personalizată, generată cu ajutorul inteligenței artificiale.
+        </p>
+      </div>
+      <div *ngIf="this.riskItems" class="score-grid">
+        <div *ngFor="let risk of riskItems" 
+             class="score-card" 
+             [class.active-card]="risk.isOpen"
+             (click)="onRiskItemClick(risk)">
+          <div class="card-content">
+            <div class="disease-name">{{risk.name}}</div>
+            <div class="risk-level">{{risk.level}}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show the chat response below the grid, for the selected card -->
+      <div class="popup-overlay" *ngIf="hasOpenCard && openCardResponse" (click)="onRiskItemClick(null)">
+        <div class="details-container" (click)="$event.stopPropagation()">
+          <button class="close-btn" (click)="onRiskItemClick(null)">×</button>
+          <div class="modal-header">
+            <div class="header-left">
+              <h2>{{ openCard?.name }}</h2>
+              <span class="ai-indicator">   
+                Generat AI           
+              </span>
+            </div>
+            <span class="risk-level">{{ openCard?.level }}</span>
+          </div>
+          <div class="response-content">
+            <p>{{ openCardResponse }}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="chatIsLoading" class="loading-container">
+        <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="loading-container">
+  <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+</div>

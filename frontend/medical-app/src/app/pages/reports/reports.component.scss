@@ -1,0 +1,250 @@
+.container {
+    max-width: 80%;
+    margin: 2rem auto;
+}
+//REPORTS
+h2 {
+    color: white;
+}
+.pdf-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.pdf-item {
+    background: white;
+    border-radius: 12px;
+    width: 250px;
+    &:hover {
+        transform: translateY(-2px); 
+    }
+}
+.pdf-pictogram {
+    padding: 1.5rem;
+    text-align: center;
+    color: #4DAA8E;
+    svg {
+        margin-bottom: 1rem;
+    }
+}
+.pdf-title {
+    color: #2c3e50;
+    margin: 0.5rem 0;
+}
+.upload-date {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+.buttons-div {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+
+    .action-btn {
+        padding: 0.5rem 1rem;
+        border: 2px solid #4DAA8E;
+        border-radius: 2rem;
+        font-size: 0.9rem;      
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &.view-btn {            
+            color: #4DAA8E;
+            background-color: white;
+            &:hover {
+                background-color: #f5f6f6;
+            }
+        }
+        &.delete-btn {
+            background-color: #4DAA8E;
+            color: white;
+            &:hover {
+                background-color: #3b9273;
+            }
+        }
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
+}
+
+//ADD REPORT
+.open-upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    color: #4DAA8E;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    &:hover {
+        background: #dddedd;
+        transform: translateY(-1px);
+    }
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.upload-container {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    animation: slideIn 0.3s ease;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #f1f5f9;
+        color: #2c3e50;
+    }
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.upload-header {
+    label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        display: block;
+    }
+}
+
+.upload-file-input {
+    position: relative;
+    border: 2px dashed #4DAA8E;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    cursor: pointer;
+
+    &:hover {
+        border-color: #3b9273;
+        background: #f1f5f9;
+    }
+
+    input[type="file"] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .file-placeholder {
+        margin: 0;
+        color: #64748b;
+        font-size: 1rem;
+    }
+}
+
+.addReportButton {
+    background: #4DAA8E;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(.inactive) {
+        background: #3b9273;
+        transform: translateY(-1px);
+    }
+
+    &.inactive {
+        background: #cbd5e1;
+        cursor: not-allowed;
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .loading {
+        width: 50px;
+        height: 50px;
+    }
+
+    p {
+        color: #64748b;
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

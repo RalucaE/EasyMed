@@ -1,0 +1,25 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+}
+.content-with-header {
+  background-color: #4DAA8E;
+}
+.content-no-header {
+  flex-grow: 1;
+  height: 100vh;
+  background-color: #f1f7f6;
+}
+.fixed-div {
+ position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #eafaf1;
+  color: #136f52;
+  border: 1px solid #a3d9c3;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  max-width: 300px;
+}

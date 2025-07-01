@@ -1,0 +1,43 @@
+<div class="charts-container">
+    <div class="container">
+        <div *ngIf="!hasReports" class="no-reports-message">
+            <h2>Nu există rapoarte disponibile</h2>
+            <p>Pentru a vedea graficele, vă rugăm să încărcați rapoarte medicale.</p>
+            <a href="/reports" class="upload-link">Încarcă rapoarte</a>
+        </div>
+        <div class="chart-container" *ngIf="this.chartOptions&&this.data">
+            <div id="dropdown-container">               
+                <select id="dropdown" [(ngModel)]="selectedOption" (change)="onOptionSelected(selectedOption)" aria-label="Select chart option">
+                <option *ngFor="let option of this.titles" [value]="option" [attr.selected]="option === selectedOption ? true : null">{{ option }}</option>
+                </select>
+            </div>
+            <hr>
+            <div id="chart" style="width: 100%; height: 600px;">
+                <apx-chart
+                [series]="chartOptions.series"
+                [chart]="chartOptions.chart"
+                [xaxis]="chartOptions.xaxis" 
+                [yaxis]="chartOptions.yaxis!"        
+                [dataLabels]="chartOptions.dataLabels"
+                [grid]="chartOptions.grid"
+                [title]="chartOptions.title"
+                [annotations]="chartOptions.annotations!">
+                </apx-chart>
+            </div>                    
+        </div>
+        <div class="chat-container" *ngIf="hasReports">        
+            <div *ngIf="this.response" class="chat-response"> 
+                <h2 class="ai-insights-title">Perspective AI</h2>                        
+                <div *ngFor="let r of this.response" >
+                    <p>{{ r }}</p>
+                </div>
+            </div>
+             <div *ngIf="isChatResponseLoading" class="loading-container">
+            <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+        </div>
+        </div>
+    </div>
+    <div *ngIf="isChatLoading&&isLoading" class="loading-container">    
+        <img alt="loading" class="loading" src="../../../assets/images/e352b26bbfa8b233050087d6cb32667da3ff809c.gif">
+    </div> 
+</div>
